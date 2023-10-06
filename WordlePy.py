@@ -1,4 +1,5 @@
 import sys
+import time
 import random
 from random import randint
 import colorama
@@ -21,6 +22,12 @@ with open("Wordle_Dictionary.txt") as file:
 def main():
     start()
 
+def delay_print(s):
+    for c in s:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(0.05)
+
 def game():
     n = 0
     i = randint(0, len(wordbank))
@@ -37,8 +44,9 @@ def game():
 
         while True:
             try:
-                print(" ")
-                guess = input("Enter your " + num_terms[n] + " guess: ")
+                print("")
+                delay_print("Enter your " + num_terms[n] + " guess: ")
+                guess = input()
                 
                 if guess not in wordbank or len(guess) > 5:
                     print(" ")
@@ -110,17 +118,27 @@ def game():
     wordle_char.clear()
 
     print(" ")
-    print("Sorry you're out of tries, the word was " + wordle + ".")
+    delay_print("Sorry you're out of tries, the word was " + Fore.YELLOW + wordle + ".") 
+    #delay_print(Fore.YELLOW + wordle + ".")
+    print(Style.RESET_ALL)
+    delay_print("Would you like to play again?")
     print(" ")
-    print("Would you like to play again?")
 
     while True:
         try:
             print(" ")
-            print("If you would like to quit, input '1'.")
-            print("If you would like to play again, input '2'.")
-            print(" ")
-            ans = int(input("Enter your selected option: "))
+            print("If you would like to quit, input ", end="") 
+            print(Fore.MAGENTA + "'1'.", end="")
+            print(Style.RESET_ALL)
+
+            print("If you would like to play again, input ", end="")
+            print(Fore.MAGENTA + "'2'.", end="")
+            print(Style.RESET_ALL) 
+
+            print("")
+
+            delay_print("Enter your selected option: ")
+            ans = int(input())
 
             if ans == 1:
                 sys.exit()
@@ -132,15 +150,15 @@ def game():
             print(" ")
             print(Style.BRIGHT + Fore.RED + "Invalid input!")
             print(Style.RESET_ALL)
-       
 
+   
 def start():
     while True:
 
         try:
-
             print(" ")
-            print(Fore.CYAN + Style.BRIGHT + "Welcome to Wordle but in python.")
+            delay_print(Fore.CYAN + Style.BRIGHT + "Welcome to Wordle but in python.")
+            print("")
             print(Style.RESET_ALL)
 
             print("If you would like to know the rules, input ", end="") 
@@ -185,8 +203,9 @@ def start():
                 print("")
                 print("7. Answers are never plurals.")
                 print(Style.RESET_ALL)
-                print(Style.BRIGHT + Fore.MAGENTA + "Good Luck ;)")
+                delay_print(Style.BRIGHT + Fore.MAGENTA + "Good Luck ;)")
                 print(Style.RESET_ALL)
+                print("")
 
                 game()
 
