@@ -24,7 +24,9 @@ while True:
 
     try:
 
-        print(Fore.RED + "Welcome to Wordle but in python.")
+        print(Fore.GREEN + "Welcome to Wordle but in python.")
+        print(Style.RESET_ALL)
+
         print(" ")
         print("If you would like to know the rules, input '1'.")
         print("If you would like to play, input '2'.")
@@ -65,17 +67,18 @@ wordle = wordbank[i]
 
 for letter in wordle:
     wordle_char.append(letter)
+
 #print(wordle)
 
 for t in range(turns):
+
+    guess_char.clear()
 
     while True:
         try:
             print(" ")
             guess = input("Enter your " + num_terms[n] + " guess: ")
 
-            for g in guess:
-                guess_char.append(g)
             
             if guess not in wordbank or len(guess) > 5:
                 print(" ")
@@ -84,6 +87,8 @@ for t in range(turns):
             
             if len(guess) == 5:
                 if guess in wordbank:
+                    for g in guess:
+                        guess_char.append(g)
                     n += 1
                     break
 
@@ -93,7 +98,25 @@ for t in range(turns):
             print("Invalid input!")
             print(" ")
     
-    for i in range(0, 5):
+    for i in range(len(wordle_char)):
 
         if guess_char[i] == wordle_char[i]:
-            print(colored(guess_char[i], 'green'), end=" ")
+            print(Fore.GREEN + guess_char[i], end=" ")
+
+        elif guess_char[i] in wordle_char:
+            print(Fore.YELLOW + guess_char[i], end=" ")
+        
+        if guess_char[i] not in wordle_char:
+            print(Fore.LIGHTWHITE_EX + guess_char[i], end=" ")
+    
+    print(" ")
+    print(Style.RESET_ALL)
+
+    if guess_char == wordle_char:
+        print(" ")
+        print("Congratulations, you got it!")
+        print("Would you like to play again?")
+        break
+
+
+        
