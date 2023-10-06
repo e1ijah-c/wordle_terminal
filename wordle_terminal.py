@@ -21,7 +21,7 @@ with open("dictionary.txt") as file:
         wordbank.append(word.strip('\n'))
 
 with open("validwords.txt") as file:
-    vwords = file.read()
+    vwords = file.readlines()
 
     for word in vwords:
         validwords.append(word.strip('\n'))
