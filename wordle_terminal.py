@@ -21,9 +21,9 @@ with open("dictionary.txt") as file:
         wordbank.append(word.strip('\n'))
 
 with open("validwords.txt") as file:
-    validwords = file.readlines()
+    vwords = file.read()
 
-    for word in validwords:
+    for word in vwords:
         validwords.append(word.strip('\n'))
 
 def main():
@@ -61,7 +61,7 @@ def game():
                     print(Style.RESET_ALL)
                 
                 if len(guess) == 5:
-                    if guess in wordbank:
+                    if guess in validwords:
                         for g in guess:
                             guess_char.append(g)
                         n += 1
