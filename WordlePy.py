@@ -118,7 +118,7 @@ def game():
     wordle_char.clear()
 
     print(" ")
-    delay_print("Sorry you're out of tries, the word was " + Fore.YELLOW + wordle + ".") 
+    delay_print("Sorry you're out of tries, the word was " + Fore.YELLOW + wordle + Fore.WHITE + ".") 
     #delay_print(Fore.YELLOW + wordle + ".")
     print(Style.RESET_ALL)
     delay_print("Would you like to play again?")
