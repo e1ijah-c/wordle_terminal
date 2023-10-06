@@ -6,6 +6,7 @@ import colorama
 from colorama import Fore, Style
 
 wordbank = []
+validwords = []
 wordle_char = []
 guess_char = []
 num_terms = ["FIRST", "SECOND", "THIRD", "FOURTH", "FIFTH", "LAST"]
@@ -18,6 +19,12 @@ with open("dictionary.txt") as file:
 
     for word in words:
         wordbank.append(word.strip('\n'))
+
+with open("validwords.txt") as file:
+    validwords = file.readlines()
+
+    for word in validwords:
+        validwords.append(word.strip('\n'))
 
 def main():
     start()
@@ -48,7 +55,7 @@ def game():
                 delay_print("Enter your " + num_terms[n] + " guess: ")
                 guess = input()
                 
-                if guess not in wordbank or len(guess) > 5:
+                if guess not in validwords or len(guess) > 5:
                     print(" ")
                     print(Style.BRIGHT + Fore.RED + "Invalid input!")
                     print(Style.RESET_ALL)
