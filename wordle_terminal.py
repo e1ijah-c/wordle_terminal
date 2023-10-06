@@ -13,7 +13,7 @@ num_terms = ["FIRST", "SECOND", "THIRD", "FOURTH", "FIFTH", "LAST"]
 guess = ''
 turns = 6
 
-with open("wordle_dictionary.txt") as file:
+with open("dictionary.txt") as file:
     words = file.readlines()
 
     for word in words:
