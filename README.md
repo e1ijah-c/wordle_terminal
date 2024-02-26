@@ -12,7 +12,6 @@
 6. Open a new terminal, and type 'cd' + _*the pathname your just copied._
 7. Run the command `python3 wordle_terminal.py`, and the game should run.
 
-This is a small project I have done to improve my python knowledge (_and yes, I know you can play Wordle in your browser_). 
 
 
 
